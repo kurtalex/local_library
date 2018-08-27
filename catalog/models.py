@@ -4,6 +4,7 @@ from django.db import models
 from django.urls import reverse
 import uuid
 
+
 class Genre(models.Model):
     """
     Model representing a book genre (e.g. Science Fiction, Non Fiction).
