@@ -79,8 +79,9 @@ class Author(models.Model):
     """
     Model representing an author.
     """
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100, default=None)
+    midle_name = models.CharField(max_length=100, default=None)
+    last_name = models.CharField(max_length=100, default=None)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('Died', null=True, blank=True)
 
