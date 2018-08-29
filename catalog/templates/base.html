@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     {% block title %}<title>Local Library</title>{% endblock %}
     {% load static %}
-    <!--<link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css'%}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/site.css'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/container.css'%}">
@@ -22,28 +22,25 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/icon.min.css'%}">
 
     <script src="{% static 'js/jquery-3.3.1.min.js'%}"></script>
-    <!--<script src="{% static 'js/jquery-ui.min.js'%}"></script> -->
+    <script src="{% static 'js/jquery-ui.min.js'%}"></script>
     <script src="{% static 'js/jquery.cookie.js'%}"></script>
     <script src="{% static 'js/form.min.js'%}"></script>
 </head>
 <body>
-    <div class="container-fluid">
-
-    <div class="row">
-      <div class="col-sm-2">
-      {% block sidebar %}
-      <ul class="sidebar-nav">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="">All books</a></li>
-          <li><a href="">All authors</a></li>
-      </ul>
-     {% endblock %}
-      </div>
-      <div class="col-sm-10 ">
-      {% block content %}{% endblock %}
-      </div>
+    {% block sidebar %}
+        <div class="ui five item menu">
+            <div class="ui container">
+                <a class="header blue item" href="/">Local Library</a>
+                <a class="blue item active" href="{% url 'index' %}">Главная</a>
+                <a class="item" href="">Все книги</a>
+                <a class="item" href="">Все авторы</a>
+            </div>
+        </div>
+    {% endblock %}
+    <div class="ui container">
+        <div class="ui column ten">
+            {% block content %}{% endblock %}
+        </div>
     </div>
-
-  </div>
 </body>
 </html>
