@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% block title %}<title>Не библиотека - а больше...</title>{%endblock  %}
 {% block content %}
 <h1>Local Library</h1>
 
@@ -9,6 +9,7 @@
 
   <p>The library has the following record counts:</p>
   <ul>
+    <li><strong>Genre:</strong> {{ genre }}</li>
     <li><strong>Books:</strong> {{ num_books }}</li>
     <li><strong>Copies:</strong> {{ num_instances }}</li>
     <li><strong>Copies available:</strong> {{ num_instances_available }}</li>

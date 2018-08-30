@@ -20,20 +20,32 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/list.min.css'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/message.min.css'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/icon.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search.css'%}">
 
     <script src="{% static 'js/jquery-3.3.1.min.js'%}"></script>
     <script src="{% static 'js/jquery-ui.min.js'%}"></script>
     <script src="{% static 'js/jquery.cookie.js'%}"></script>
     <script src="{% static 'js/form.min.js'%}"></script>
+    <script src="{% static 'js/search.js'%}"></script>
+    <script src="{% static 'js/search_book.js'%}"></script>
 </head>
 <body>
     {% block sidebar %}
-        <div class="ui five item menu">
+        <div class="ui six item menu">
             <div class="ui container">
-                <a class="header blue item" href="/">Local Library</a>
-                <a class="blue item active" href="{% url 'index' %}">Главная</a>
-                <a class="item" href="">Все книги</a>
-                <a class="item" href="">Все авторы</a>
+                <a class="header teal item" href="/">Local Library</a>
+                <a class="teal item active" href="{% url 'index' %}">Главная</a>
+                <a class="item" href="{% url 'books' %}">Книги</a>
+                <a class="item" href="">Авторы</a>
+                <a class="item" href="">Жанры</a>
+
+                <div class="ui medium right aligned category search">
+                  <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Поиск книги...">
+                    <i class="search icon"></i>
+                  </div>
+                  <div class="results"></div>
+                </div>
             </div>
         </div>
     {% endblock %}

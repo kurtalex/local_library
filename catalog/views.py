@@ -2,7 +2,10 @@
 from __future__ import unicode_literals
 from django.shortcuts import render
 from .models import Book, Author, BookInstance, Genre
+from django.views import generic
 
+class BookListView(generic.ListView):
+    model = Book
 
 def index(request):
     """
