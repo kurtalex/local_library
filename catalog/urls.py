@@ -1,7 +1,8 @@
-from django.conf.urls import url, re_path, include
+from django.conf.urls import re_path
+
 from . import views
+
 urlpatterns = [
     re_path('', views.index, name='index'),
-    re_path(r'^books/$', views.BookListView.as_view(), name='books'),
-    #url(r'^catalog/', include('catalog.urls')),
+    re_path('book/<int:pk>', views.BookDetailView.as_view(), name='book-detail'),
 ]

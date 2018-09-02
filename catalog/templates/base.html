@@ -4,55 +4,74 @@
     <meta charset="UTF-8">
     {% block title %}<title>Local Library</title>{% endblock %}
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/site.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/container.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/grid.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/image.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/divider.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/segment.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/input.min.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/button.min.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/list.min.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/message.min.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/icon.min.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/search.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/site.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/container.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/grid.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/image.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/divider.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/segment.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/input.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/button.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/list.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/message.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/icon.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
 
-    <script src="{% static 'js/jquery-3.3.1.min.js'%}"></script>
-    <script src="{% static 'js/jquery-ui.min.js'%}"></script>
-    <script src="{% static 'js/jquery.cookie.js'%}"></script>
-    <script src="{% static 'js/form.min.js'%}"></script>
-    <script src="{% static 'js/search.js'%}"></script>
-    <script src="{% static 'js/search_book.js'%}"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery.cookie.js' %}"></script>
+    <script src="{% static 'js/form.min.js' %}"></script>
+    <script src="{% static 'js/search.js' %}"></script>
+    <script src="{% static 'js/search_book.js' %}"></script>
 </head>
 <body>
-    {% block sidebar %}
-        <div class="ui six item menu">
-            <div class="ui container">
-                <a class="header teal item" href="/">Local Library</a>
-                <a class="teal item active" href="{% url 'index' %}">Главная</a>
-                <a class="item" href="{% url 'books' %}">Книги</a>
-                <a class="item" href="">Авторы</a>
-                <a class="item" href="">Жанры</a>
+{% block sidebar %}
+    <div class="ui six item menu">
+        <div class="ui container">
+            <a class="header teal item" href="/">Local Library</a>
+            <a class="teal item active" href="{% url 'index' %}">Главная</a>
+            <a class="item" href="">Книги</a>
+            <a class="item" href="">Авторы</a>
+            <a class="item" href="">Жанры</a>
 
-                <div class="ui medium right aligned category search">
-                  <div class="ui icon input">
+            <div class="ui medium right aligned category search">
+                <div class="ui icon input">
                     <input class="prompt" type="text" placeholder="Поиск книги...">
                     <i class="search icon"></i>
-                  </div>
-                  <div class="results"></div>
                 </div>
+                <div class="results"></div>
             </div>
         </div>
-    {% endblock %}
-    <div class="ui container">
-        <div class="ui column ten">
-            {% block content %}{% endblock %}
-        </div>
     </div>
+{% endblock %}
+<div class="ui container">
+    <div class="ui column ten">
+        {% block content %}{% endblock %}
+
+        {% block pagination %}
+            {% if is_paginated %}
+                <div class="pagination">
+                      <span class="page-links">
+                          {% if page_obj.has_previous %}
+                              <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                          {% endif %}
+                          <span class="page-current">
+                              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                          </span>
+                          {% if page_obj.has_next %}
+                              <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                          {% endif %}
+                      </span>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+    </div>
+</div>
 </body>
 </html>

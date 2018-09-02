@@ -1,19 +1,16 @@
 {% extends "base.html" %}
-{% block title %}<title>Не библиотека - а больше...</title>{%endblock  %}
+{% block title %}<title>Не библиотека - а больше...</title>{% endblock %}
 {% block content %}
-<h1>Local Library</h1>
+    <h1>Local Library</h1>
 
-  <p>Добро пожаловать на <em>LocalLibrary</em>, лучшую библиотеку в сети.</p>
-
-<h2>Dynamic content</h2>
-
-  <p>The library has the following record counts:</p>
-  <ul>
-    <li><strong>Genre:</strong> {{ genre }}</li>
-    <li><strong>Books:</strong> {{ num_books }}</li>
-    <li><strong>Copies:</strong> {{ num_instances }}</li>
-    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
-    <li><strong>Authors:</strong> {{ num_authors }}</li>
-  </ul>
+    <p>Добро пожаловать на <em>LocalLibrary</em>, лучшую библиотеку в сети.</p>
+    <p>В библиотеке есть следующие книги:</p>
+    <ul>
+        <li><strong>Жанры1:</strong> {{ genre }}</li>
+        <li><strong>Книги:</strong> {{ num_books }}</li>
+        <li><strong>Копии книг:</strong> {{ num_instances }}</li>
+        <li><strong>Доступные книги:</strong> {{ num_instances_available }}</li>
+        <li><strong>Авторы:</strong> {{ num_authors }}</li>
+    </ul>
 
 {% endblock %}
