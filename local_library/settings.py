@@ -56,7 +56,8 @@ ROOT_URLCONF = 'local_library.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        #'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': ['./templates',]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -72,6 +73,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'local_library.wsgi.application'
 
+LOGIN_REDIRECT_URL = '/'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
