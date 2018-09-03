@@ -20,9 +20,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-                  re_path('admin/', admin.site.urls),
-                  re_path('catalog/', include('catalog.urls')),
-                  re_path('', RedirectView.as_view(url='/catalog1/', permanent=True)),
-                  re_path('admin/doc/', include('django.contrib.admindocs.urls')),
-                  re_path('accounts/', include('django.contrib.auth.urls')),
+                  re_path(r'^admin/', admin.site.urls),
+                  re_path(r'^catalog/', include('catalog.urls')),
+                  re_path(r'^$', RedirectView.as_view(url='/catalog/', permanent=True)),
+                  re_path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+                  re_path(r'^accounts/', include('django.contrib.auth.urls')),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

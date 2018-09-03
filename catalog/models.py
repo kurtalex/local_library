@@ -71,10 +71,10 @@ class BookInstance(models.Model):
         return False
 
     LOAN_STATUS = (
-        ('m', 'Maintenance'),
-        ('o', 'On loan'),
-        ('a', 'Available'),
-        ('r', 'Reserved'),
+        ('m', 'Недоступна'),
+        ('o', 'Взаймы'),
+        ('a', 'Доступна'),
+        ('r', 'Зарезервированная'),
     )
 
     status = models.CharField(max_length=1, choices=LOAN_STATUS, blank=True, default='d', help_text='Наличие книги')

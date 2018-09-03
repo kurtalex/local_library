@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block sidebar %}
+    <div class="ui six item menu">
+        <div class="ui container">
+            <a class="header teal item" href="/">Local Library</a>
+            <a class="item" href="{% url 'index' %}">Главная</a>
+            <a class="teal item active" href="{% url 'books' %}"><strong>Книги</strong></a>
+            <a class="item" href="{% url 'authors' %}">Авторы</a>
+            <a class="item" href="">Жанры</a>
+
+            <div class="ui medium right aligned category search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Поиск книги...">
+                    <i class="search icon"></i>
+                </div>
+                <div class="results"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <h1>Список книг</h1>
+
+    {% if book_list %}
+        <ul>
+
+            {% for book in book_list %}
+                <li>
+                    <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{ book.author }})
+                </li>
+            {% endfor %}
+
+        </ul>
+
+    {% else %}
+        <p>В библиотеке ещё нет книг...</p>
+    {% endif %}
+{% endblock %}
